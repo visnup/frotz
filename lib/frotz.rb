@@ -3,7 +3,7 @@
 class Frotz
   def initialize
     dir = File.dirname __FILE__
-    IO.popen "dfrotz #{dir}/ZORK1.DAT 2>/dev/null", 'w+' do |f|
+    IO.popen "/usr/local/bin/dfrotz #{dir}/ZORK1.DAT 2>/dev/null", 'w+' do |f|
       @frotz = f
       sleep 0.5
       output
