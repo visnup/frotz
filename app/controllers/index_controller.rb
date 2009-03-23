@@ -3,7 +3,7 @@ require 'frotz'
 class IndexController < ApplicationController
   def index
     session[:save] ||= params[:save] || UUID.random_create
-    save = (Rails.root + 'tmp' + session[:save] + '.sav').to_s
+    save = "/tmp/#{session[:save]}.sav"
 
     Frotz.new do |f|
       f.restore save  if File.exists?(save)
