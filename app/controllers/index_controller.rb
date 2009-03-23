@@ -2,7 +2,7 @@ require 'frotz'
 
 class IndexController < ApplicationController
   def index
-    session[:save] ||= UUID.random_create
+    session[:save] ||= params[:save] || UUID.random_create
     save = (Rails.root + 'tmp' + session[:save] + '.sav').to_s
 
     Frotz.new do |f|
