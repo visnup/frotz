@@ -2,8 +2,8 @@ require 'frotz'
 
 class IndexController < ApplicationController
   def index
-    session[:save] ||= params[:save] || UUID.random_create
-    save = "/tmp/#{session[:save]}.sav"
+    session[:save] ||= UUID.random_create
+    save = "/tmp/#{params[:save] || session[:save]}.sav"
 
     Frotz.new do |f|
       f.restore save  if File.exists?(save)
